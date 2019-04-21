@@ -6,7 +6,10 @@ This is a proxy that caches GET requests for a single backing Redis instance. An
 
 The cache is limited in size and is defined by two parameters, the capacity and the global expiry. The capacity defines how many keys can be stored in the cache, and the global expiry defines how long is allowed to pass before a key is expired, which is thereafter treated as if it weren't in the cache. When the cache is at capacity, items are evicted according to a least-recently-used policy.
 
-Requests to the backing Redis instance can be sent sequentially with a concurrent runner class or with an instance of the proxy. Requests can be sent concurrently only with a concurrent runner class, although they will be handled sequentially. In separate Class JedisUtil I have also added pool connections configuration for Jedis Parallel concurrent processing as part of bonus flow
+Requests to the backing Redis instance can be sent sequentially with a concurrent runner class or with an instance of the proxy. Requests can be sent concurrently only with a concurrent runner class, although they will be handled sequentially. 
+
+Parallel processing through Jedis pool connections
+In separate Class JedisUtil I have also added pool connections configuration for Jedis Parallel concurrent processing as part of bonus flow
 
 ## KT of Code. What code does
 
@@ -21,7 +24,6 @@ Added multiple instances connections through Jedis Pool configuration. This is b
 I have used poll configurations here so that separate requests do not adversely affect functional behaviour. We can easily set max pool limit.
 
 ### Prerequisites
-
 * Docker
 * Docker-Compose
 * Java 8
@@ -42,7 +44,7 @@ You should see message = "Ready to accept connections"
 Now go to 1st window and run following command
 make test 
 
-
+Make sure docker desktop is running on your local laptop/Desktop
 May be required on windows as this thread should be already running on computer where this can be tested. (In separate terminal window, run `docker daemon` in one terminal window)
 
 You should see the output from JUnit that reports the tests passed.
@@ -52,18 +54,18 @@ Understanding requirements: ~30 minutes
 
 Setting up system, Redis, and Docker: ~2 hours
 
-Total time on all features of cache: ~3 hours
+Developing all features of cache: ~3 hours
 
-Total time on unit tests: ~2 hours
+Time on unit tests: ~2 hours
 
 Totak time for understanding Jedis Pool connections for parallel concurrent processing: ~1 hour
 
 Documentation: ~1 hour
 
-Revision: ~1 hour
+Validations: ~1 hour
 
 Doing one more hobby project for SpringBoot Redis: ~3 hours
-link : 
+link : https://github.com/tanaya13693/SprintBoot-Redis-Proxy
+tested endpoints of CRUD operations through postman.
 
-## Unimplemented requirements
-My code only stores strings as values, instead of storing general data structures, mostly because of time issues.
+
