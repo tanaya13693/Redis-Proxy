@@ -29,14 +29,41 @@ I have used poll configurations here so that separate requests do not adversely 
 
 ## Instructions for running the proxy and tests
 
-All commands should be run from the project's root directory 
+1st Window (Terminal)
+1. git clone https://github.com/tanaya13693/Redis-Proxy.git
+2. cd Redis-Proxy/redis-proxy-cache/
+
+2nd window 
+1. cd Redis-Proxy/redis-proxy-cache/
+2. docker-compose up
+
+You should see message = "Ready to accept connections"
+
+Now go to 1st window and run following command
+make test 
+
 
 May be required on windows as this thread should be already running on computer where this can be tested. (In separate terminal window, run `docker daemon` in one terminal window)
 
-In one terminal window, run `docker-compose up`. You should see Ready to accept connections in this terminal for next command to run.
-
-In 2nd terminal window, run `make test`.
-
 You should see the output from JUnit that reports the tests passed.
 
+## Time breakdown
+Understanding requirements: ~30 minutes
 
+Setting up system, Redis, and Docker: ~2 hours
+
+Total time on all features of cache: ~3 hours
+
+Total time on unit tests: ~2 hours
+
+Totak time for understanding Jedis Pool connections for parallel concurrent processing: ~1 hour
+
+Documentation: ~1 hour
+
+Revision: ~1 hour
+
+Doing one more hobby project for SpringBoot Redis: ~3 hours
+link : 
+
+## Unimplemented requirements
+My code only stores strings as values, instead of storing general data structures, mostly because of time issues.
